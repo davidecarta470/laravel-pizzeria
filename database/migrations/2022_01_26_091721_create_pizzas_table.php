@@ -16,7 +16,7 @@ class CreatePizzasTable extends Migration
         Schema::create('pizzas', function (Blueprint $table) {
             $table->id();
             $table->string('name',50);
-            $table->string('ingradients',200);
+            $table->string('ingredients',200);
             $table->decimal('price',4,2);
             $table->text('description',500)->nullable();
             $table->timestamps();
