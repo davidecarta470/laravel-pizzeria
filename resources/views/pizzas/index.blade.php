@@ -11,9 +11,10 @@
     {{$pizza->name}}
     {{$pizza->ingredients}}
     {{$pizza->price}}
+    <a href="{{route('pizzas.show', $pizza)}}">dettaglio</a>
 
   </p>
-      
+
   @endforeach
 </main>
 
