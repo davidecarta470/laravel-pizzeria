@@ -9,7 +9,7 @@ use Illuminate\Routing\Route;
 class PizzaController extends Controller
 {
     public function index(){
-        
+
         // dobbiamo leggere tutte le pizze dalla tabella pizzas
         $pizzas = Pizza::all();
 
@@ -26,7 +26,7 @@ class PizzaController extends Controller
      */
     public function create()
     {
-        //
+        return view('pizzas.create');
     }
 
     /**
@@ -37,7 +37,12 @@ class PizzaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $new_pizza = new Pizza();
+        $new_pizza->fill($data);
+        $new_pizza->save();
+
+        return redirect()->route('pizzas.index');
     }
 
     /**
@@ -48,7 +53,7 @@ class PizzaController extends Controller
      */
     public function show(Pizza $pizza)
     {
-        
+
 
         return view("pizzas.show", compact('pizza'));
     }
