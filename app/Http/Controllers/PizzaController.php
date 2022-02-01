@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Pizza;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 
 class PizzaController extends Controller
 {
@@ -45,9 +46,11 @@ class PizzaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Pizza $pizza)
     {
-        //
+        
+
+        return view("pizzas.show", compact('pizza'));
     }
 
     /**
