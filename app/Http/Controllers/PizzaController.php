@@ -37,6 +37,13 @@ class PizzaController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:50',
+            'ingredients' => 'required|max:200',
+            'price' => 'required|numeric|max:99.99',
+            'description' => 'max:500'
+        ]);
+
         $data = $request->all();
         $new_pizza = new Pizza();
         $new_pizza->fill($data);
@@ -53,8 +60,6 @@ class PizzaController extends Controller
      */
     public function show(Pizza $pizza)
     {
-
-
         return view("pizzas.show", compact('pizza'));
     }
 
@@ -64,9 +69,9 @@ class PizzaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Pizza $pizza)
     {
-        //
+        return view("pizzas.edit", compact('pizza'));
     }
 
     /**
@@ -76,9 +81,19 @@ class PizzaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Pizza $pizza)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:50',
+            'ingredients' => 'required|max:200',
+            'price' => 'required|numeric',
+            'description' => 'max:500'
+        ]);
+
+        $data = $request->all();
+        $pizza->update($data);
+
+        return redirect()->route('pizzas.index');        //
     }
 
     /**
@@ -87,8 +102,10 @@ class PizzaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Pizza $pizza)
     {
-        //
+        $pizza->delete();
+
+        return redirect()->route('pizzas.index');
     }
 }
