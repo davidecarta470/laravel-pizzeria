@@ -55,11 +55,7 @@ class PizzaController extends Controller
         if (array_key_exists('sizes', $data)) {
             $new_pizza->sizes()->attach($data['sizes']);
         }
-        // 
-        // 
-        // 
-        // 
-        // 
+        
         return redirect()->route('pizzas.index');
     }
 
@@ -117,18 +113,6 @@ class PizzaController extends Controller
     {
         $pizza->delete();
 
-        //  $pizza->delete();
-        //  $pizza->delete();
-        //  $pizza->delete();
-        //  $pizza->delete();
-        //  $pizza->delete();
-        //  $pizza->delete();
-        //  $pizza->delete();
-        //  $pizza->delete();
-        //  $pizza->delete();
-        //  $pizza->delete();
-        //  $pizza->delete();
-        //  $pizza->delete();
         return redirect()->route('pizzas.index');
     }
 }
