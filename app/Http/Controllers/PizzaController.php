@@ -48,7 +48,13 @@ class PizzaController extends Controller
         $new_pizza = new Pizza();
         $new_pizza->fill($data);
         $new_pizza->save();
+        
 
+        // sto lavorando sullo stesso file su cui lavora Luigi
+        // sto lavorando sullo stesso file su cui lavora Luigi
+        // sto lavorando sullo stesso file su cui lavora Luigi
+        // sto lavorando sullo stesso file su cui lavora Luigi
+        
         return redirect()->route('pizzas.index');
     }
 
