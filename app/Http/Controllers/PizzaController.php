@@ -112,6 +112,18 @@ class PizzaController extends Controller
     {
         $pizza->delete();
 
+        //  $pizza->delete();
+        //  $pizza->delete();
+        //  $pizza->delete();
+        //  $pizza->delete();
+        //  $pizza->delete();
+        //  $pizza->delete();
+        //  $pizza->delete();
+        //  $pizza->delete();
+        //  $pizza->delete();
+        //  $pizza->delete();
+        //  $pizza->delete();
+        //  $pizza->delete();
         return redirect()->route('pizzas.index');
     }
 }
