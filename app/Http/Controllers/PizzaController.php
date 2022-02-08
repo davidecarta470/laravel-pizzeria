@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pizza;
+use App\Size;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 
@@ -26,7 +27,8 @@ class PizzaController extends Controller
      */
     public function create()
     {
-        return view('pizzas.create');
+        $sizes = Size::all();
+        return view('pizzas.create', compact('sizes'));
     }
 
     /**
@@ -48,6 +50,10 @@ class PizzaController extends Controller
         $new_pizza = new Pizza();
         $new_pizza->fill($data);
         $new_pizza->save();
+
+        if (array_key_exists('sizes', $data)) {
+            $new_pizza->sizes()->attach($data['sizes']);
+        }
 
         return redirect()->route('pizzas.index');
     }
