@@ -50,11 +50,16 @@ class PizzaController extends Controller
         $new_pizza = new Pizza();
         $new_pizza->fill($data);
         $new_pizza->save();
+        
 
         if (array_key_exists('sizes', $data)) {
             $new_pizza->sizes()->attach($data['sizes']);
         }
-
+        // 
+        // 
+        // 
+        // 
+        // 
         return redirect()->route('pizzas.index');
     }
 
