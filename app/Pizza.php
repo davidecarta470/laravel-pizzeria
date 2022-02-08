@@ -12,4 +12,8 @@ class Pizza extends Model
         'price',
         'description'
     ];
+
+    public function sizes() {
+        return $this->belongsToMany('App\Size');
+    }
 }

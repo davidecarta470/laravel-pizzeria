@@ -34,6 +34,21 @@
       <label for="description" class="form-label">description</label>
       <textarea type="text" name="description" class="form-control" id="description">{{ old('description') }}</textarea>
     </div>
+    <div class="mb-3 form-check">
+      @foreach ($sizes as $size)
+        <input 
+          type="checkbox" 
+          class="form-check-input" 
+          id="size{{ $size->id }}"
+          name="sizes[]"
+          value="{{ $size->id }}"
+          @if (in_array($size->id, old('sizes', [])))
+            checked
+          @endif
+        >
+        <label class="form-check-label mr-5" for="size{{ $size->id }}">{{ $size->name }}</label>
+      @endforeach
+    </div>
 
 
     <button type="submit" class="btn btn-primary">Submit</button>
